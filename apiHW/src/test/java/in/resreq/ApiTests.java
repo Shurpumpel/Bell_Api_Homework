@@ -175,7 +175,6 @@ public class ApiTests {
                 .get("/api/unknown")
                 .then()
                 .extract().as(ListColors.class);
-
         List<String> colors = listColorsInfo.getData().stream()
                 .map(ColorInfo::getColor)
                 .collect(Collectors.toList());
@@ -205,7 +204,6 @@ public class ApiTests {
                 .get("api/users/"+userRegisterResponse.getId())
                 .then()
                 .extract().response();
-
         JsonPath jsonPath = response.jsonPath();
         UserInfo user = jsonPath.getObject("data", UserInfo.class);
         Assertions.assertNotNull(user);
